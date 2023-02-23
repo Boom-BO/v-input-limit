@@ -1,6 +1,6 @@
 {
 	"name": "v-input-limit",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "vue指令-快速实现限制输入框数字类型及数字范围限制",
 	"main": "src/index.js",
 	"scripts": {
