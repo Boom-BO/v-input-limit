@@ -14,7 +14,7 @@ const intFilter = el => {
 		}
 	})
 }
-const intRangeFilter = (el, [min, max]: Array<number>) => {
+const intRangeFilter = (el, [min, max]) => {
 	// 正整数范围限制,例0-100，min=0,max=100
 	addListener(el, 'keyup', () => {
 		el.value = el.value.replace(/\D/g, '')
@@ -38,7 +38,7 @@ const intRangeFilter = (el, [min, max]: Array<number>) => {
 		}
 	})
 }
-const floatFilter = function (el, value: number) {
+const floatFilter = function (el, value) {
 	// 整数或小数
 	addListener(el, 'keyup', () => {
 		if (value === undefined) {
@@ -53,10 +53,7 @@ const floatFilter = function (el, value: number) {
 		}
 	})
 }
-const floatRangeFilter = function (
-	el,
-	value: { decimal: number; range: Array<number> }
-) {
+const floatRangeFilter = function (el, value) {
 	// 小数、小数范围限制
 	const decimal = value.decimal
 	const [min, max] = value.range
@@ -88,14 +85,9 @@ const floatRangeFilter = function (
 		}
 	})
 }
-interface paramsObj {
-	arg: string
-	value: any
-	modifiers: any
-}
-export default (Vue: any) => {
+export default Vue => {
 	Vue.directives('input-limit', {
-		bind: (el: any, { arg, value, modifiers }: paramsObj) => {
+		bind: (el, { arg, value, modifiers }) => {
 			try {
 				if (el.tagName.toLowerCase() !== 'input') {
 					el = el.getElementsByTagName('input')[0]
