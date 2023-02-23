@@ -1,4 +1,3 @@
-import { Message } from 'element-ui'
 const addListener = function (el, type, fn) {
 	el.addEventListener(type, fn, false)
 }
@@ -22,18 +21,10 @@ const intRangeFilter = (el, [min, max]) => {
 			el.value = ''
 		}
 		if (!(!min && min !== 0) && el.value && el.value < min) {
-			Message({
-				message: '输入值不能小于' + min + '',
-				type: 'warning',
-				duration: 1000
-			})
+			console.warn('输入值不能小于' + min + '')
 			el.value = min
 		} else if (!(!max && max !== 0) && el.value > max) {
-			Message({
-				message: '输入值不能大于' + max + '',
-				type: 'warning',
-				duration: 1000
-			})
+			console.warn('输入值不能大于' + max + '')
 			el.value = max
 		}
 	})
@@ -69,24 +60,16 @@ const floatRangeFilter = function (el, value) {
 			el.value = ''
 		}
 		if (!(!min && min !== 0) && el.value && el.value < min) {
-			Message({
-				message: '输入值不能小于' + min + '',
-				type: 'warning',
-				duration: 1000
-			})
+			console.warn('输入值不能小于' + min + '')
 			el.value = min
 		} else if (!(!max && max !== 0) && el.value > max) {
-			Message({
-				message: '输入值不能大于' + max + '',
-				type: 'warning',
-				duration: 1000
-			})
+			console.warn('输入值不能大于' + max + '')
 			el.value = max
 		}
 	})
 }
 export default Vue => {
-	Vue.directives('input-limit', {
+	Vue.directive('input-limit', {
 		bind: (el, { arg, value, modifiers }) => {
 			try {
 				if (el.tagName.toLowerCase() !== 'input') {
