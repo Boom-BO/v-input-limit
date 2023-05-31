@@ -3,6 +3,10 @@
 	"version": "1.0.4",
 	"description": "vue指令-快速实现限制输入框数字类型及数字范围限制",
 	"main": "src/index.js",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:Boom-BO/v-input-limit.git"
+	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
