@@ -11,6 +11,7 @@ const intFilter = el => {
 		if (isNaN(el.value)) {
 			el.value = ''
 		}
+		inputUpdate(el)
 	})
 }
 const intRangeFilter = (el, [min, max]) => {
@@ -27,6 +28,7 @@ const intRangeFilter = (el, [min, max]) => {
 			console.warn('输入值不能大于' + max + '')
 			el.value = max
 		}
+		inputUpdate(el)
 	})
 }
 const floatFilter = function (el, value) {
@@ -42,6 +44,7 @@ const floatFilter = function (el, value) {
 		if (isNaN(el.value)) {
 			el.value = ''
 		}
+		inputUpdate(el)
 	})
 }
 const floatRangeFilter = function (el, value) {
@@ -66,7 +69,14 @@ const floatRangeFilter = function (el, value) {
 			console.warn('输入值不能大于' + max + '')
 			el.value = max
 		}
+		inputUpdate(el)
 	})
+}
+const inputUpdate = el => {
+	if (el.dispatchEvent) {
+		// 触发输入框自定义事件，目的是为了触发v-model刷新
+		el.dispatchEvent(new Event('input'))
+	}
 }
 export default Vue => {
 	Vue.directive('input-limit', {
